@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Example Next.js 14 implementation of Firebase Auth on the client and server side
 
 ## Getting Started
 
@@ -16,21 +16,33 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `app/page.tsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Firebase setup
 
-## Learn More
+Setting environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+Create a `.env.local` file with the following environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+FIREBASE_SERVICE_ACCOUNT_KEY='{"type":"service_account","project_id":"...
+```
 
-## Deploy on Vercel
+You can get the values for the environment variables from the Firebase console. You will need to get the service account key from the Firebase console under project settings.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Client and server-side authentication
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The client-side authentication is implemented using the Firebase SDK. The server-side authentication is implemented using the Firebase Admin SDK.
+
+The client-side authentication is used to authenticate the user and get the ID token. The ID token is then sent to the server-side and used to authenticate the user.
+
+The server-side authentication is used to create a session cookie and provide access in server components.
+
+### Middleware
+
+The middleware.ts ensures that the user is authenticated before allowing access to server-side pages. Where a session is not detected or not valid, the user is redirected to the login page.
