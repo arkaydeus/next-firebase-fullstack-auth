@@ -22,6 +22,4 @@ export async function middleware(request: NextRequest) {
 export const config = {
   // match every path except / and /login and /api routes
   matcher: ['/((?!_next/static|_next/image|favicon.ico|login|api|$).*)'],
-
-  // matcher: ['/dashboard/:path*'],
 }

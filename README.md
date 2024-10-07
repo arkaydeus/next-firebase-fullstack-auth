@@ -45,4 +45,8 @@ The server-side authentication is used to create a session cookie and provide ac
 
 ### Middleware
 
-The middleware.ts ensures that the user is authenticated before allowing access to server-side pages. Where a session is not detected or not valid, the user is redirected to the login page.
+The middleware.ts ensures that the user is authenticated before allowing access to server-side pages. Where a session is not detected, the user is redirected to the login page.
+
+### Context
+
+The AuthContext.tsx provides a context for the authentication state and provides a signIn and signOut function.
