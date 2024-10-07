@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   User,
 } from 'firebase/auth'
+
 import { auth } from './config'
 
 export const signIn = (email: string, password: string) =>
@@ -14,7 +15,9 @@ export const signIn = (email: string, password: string) =>
 export const signUp = (email: string, password: string) =>
   createUserWithEmailAndPassword(auth, email, password)
 
-export const signOut = () => firebaseSignOut(auth)
+export const signOut = () => {
+  firebaseSignOut(auth)
+}
 
 export const onAuthStateChanged = (callback: (user: User | null) => void) =>
   firebaseOnAuthStateChanged(auth, callback)

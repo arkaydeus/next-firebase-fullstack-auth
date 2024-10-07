@@ -10,8 +10,6 @@ const firebaseConfig = {
   // appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
 
-console.log(firebaseConfig)
-
 // Initialize Firebase
 const app =
   getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
